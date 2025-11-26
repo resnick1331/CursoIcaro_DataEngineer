@@ -1,0 +1,9 @@
+{
+	"name": "DemoFactoryIcaro01",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c6372fab-07be-469a-a7ab-4aad9f770bd2",
+		"tenantId": "f57148eb-7a66-414b-b302-25ddb639be39"
+	}
+}
