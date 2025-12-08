@@ -1,0 +1,11 @@
+{
+	"name": "AzureBlobStorageDestino",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"containerUri": "https://icarocurso.blob.core.windows.net/destino",
+			"authenticationType": "Anonymous"
+		}
+	}
+}
