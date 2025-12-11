@@ -1,0 +1,36 @@
+{
+	"name": "IngestaSQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup_Count_Producto",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT COUNT(1) AS Total FROM SalesLT.Product",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_SQL_Producto_Table",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "01-Ingestas/IngestaSQL"
+		},
+		"annotations": []
+	}
+}
