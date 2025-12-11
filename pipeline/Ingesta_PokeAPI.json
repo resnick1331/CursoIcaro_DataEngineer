@@ -1,0 +1,102 @@
+{
+	"name": "Ingesta_PokeAPI",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_PokeAPI_to_DataLake",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['count']"
+								},
+								"sink": {
+									"path": "$['count']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['next']"
+								},
+								"sink": {
+									"path": "$['next']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['previous']"
+								},
+								"sink": {
+									"path": "$['previous']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['results'][0]['name']"
+								},
+								"sink": {
+									"path": "$['results'][0]['name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['results'][0]['url']"
+								},
+								"sink": {
+									"path": "$['results'][0]['url']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_Rest_PokeAPI_P",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ADLS_Pokemon_JSON",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "01-Ingestas/IngestaAPI"
+		},
+		"annotations": []
+	}
+}
