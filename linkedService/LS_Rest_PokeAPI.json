@@ -1,0 +1,12 @@
+{
+	"name": "LS_Rest_PokeAPI",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://pokeapi.co/api/v2/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
