@@ -14,7 +14,7 @@
 				"typeProperties": {
 					"variableName": "varYear",
 					"value": {
-						"value": "@substring(pipeline().parameters.InputDate, 0, 4)",
+						"value": "@formatDateTime(pipeline().parameters.InputDate, 'yyyy')",
 						"type": "Expression"
 					}
 				}
@@ -22,7 +22,14 @@
 			{
 				"name": "Set_Month",
 				"type": "SetVariable",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Set_Year",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureOutput": false,
 					"secureInput": false
@@ -30,16 +37,20 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "varMonth",
-					"value": {
-						"value": "@substring(pipeline().parameters.InputDate, 5, 2)",
-						"type": "Expression"
-					}
+					"value": "@formatDateTime(pipeline().parameters.InputDate, 'MM')"
 				}
 			},
 			{
 				"name": "Set_Day",
 				"type": "SetVariable",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Set_Month",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureOutput": false,
 					"secureInput": false
@@ -48,7 +59,7 @@
 				"typeProperties": {
 					"variableName": "varDay",
 					"value": {
-						"value": "@substring(pipeline().parameters.InputDate, 8, 2)",
+						"value": "@formatDateTime(pipeline().parameters.InputDate, 'dd')",
 						"type": "Expression"
 					}
 				}
@@ -56,7 +67,16 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"dependsOn": [],
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [
+					{
+						"activity": "Set_Day",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -124,7 +144,7 @@
 		"parameters": {
 			"InputDate": {
 				"type": "string",
-				"defaultValue": "'2025-12-10'"
+				"defaultValue": "2025-12-10"
 			}
 		},
 		"variables": {
