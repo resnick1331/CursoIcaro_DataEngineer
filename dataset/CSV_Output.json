@@ -1,0 +1,37 @@
+{
+	"name": "CSV_Output",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"pYear": {
+				"type": "string"
+			},
+			"pMonth": {
+				"type": "string"
+			},
+			"pDay": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "testFile.csv",
+				"container": {
+					"value": "@concat('output/', dataset().pYear, '/', dataset().pMonth, '/', dataset().pDay)",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

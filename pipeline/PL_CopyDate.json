@@ -1,0 +1,100 @@
+{
+	"name": "PL_CopyDate",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set_Year",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varYear",
+					"value": "@substring(pipeline().parameters.InputDate, 0, 4)"
+				}
+			},
+			{
+				"name": "Set_Month",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varMonth",
+					"value": {
+						"value": "@substring(pipeline().parameters.InputDate, 5, 2)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set_Day",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "varDay",
+					"value": "@substring(pipeline().parameters.InputDate, 8, 2)"
+				}
+			},
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_SQL_Producto_Table",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"InputDate": {
+				"type": "string",
+				"defaultValue": "'2025-12-10'"
+			}
+		},
+		"variables": {
+			"varYear": {
+				"type": "String"
+			},
+			"varMonth": {
+				"type": "String"
+			},
+			"varDay": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "02-Ejercicio_ADF"
+		},
+		"annotations": []
+	}
+}
