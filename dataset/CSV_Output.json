@@ -1,0 +1,40 @@
+{
+	"name": "CSV_Output",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "primerContenedor",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"pYear": {
+				"type": "string",
+				"defaultValue": "2025"
+			},
+			"pMonth": {
+				"type": "string",
+				"defaultValue": "12"
+			},
+			"pDay": {
+				"type": "string",
+				"defaultValue": "14"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "testFile.csv",
+				"container": {
+					"value": "@concat('output/', dataset().pYear, '/', dataset().pMonth,'/',dataset().pDay)",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
