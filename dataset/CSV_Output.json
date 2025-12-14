@@ -2,7 +2,7 @@
 	"name": "CSV_Output",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "primerContenedor",
+			"referenceName": "LS_ADLS_Storage",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -24,9 +24,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "testFile.csv",
 				"container": {
-					"value": "@concat('output/', dataset().pYear, '/', dataset().pMonth,'/',dataset().pDay)",
+					"value": "@concat('adf-output/', dataset().pYear, '/', dataset().pMonth,'/',dataset().pDay)",
 					"type": "Expression"
 				}
 			},

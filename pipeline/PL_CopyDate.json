@@ -13,7 +13,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "varYear",
-					"value": "@substring(pipeline().parameters.InputDate, 0, 4)"
+					"value": {
+						"value": "@substring(pipeline().parameters.InputDate, 0, 4)",
+						"type": "Expression"
+					}
 				}
 			},
 			{
@@ -44,7 +47,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "varDay",
-					"value": "@substring(pipeline().parameters.InputDate, 8, 2)"
+					"value": {
+						"value": "@substring(pipeline().parameters.InputDate, 8, 2)",
+						"type": "Expression"
+					}
 				}
 			},
 			{
@@ -65,12 +71,52 @@
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "DS_SQL_Producto_Table",
 						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CSV_Output",
+						"type": "DatasetReference",
+						"parameters": {
+							"pYear": {
+								"value": "@variables('varYear')",
+								"type": "Expression"
+							},
+							"pMonth": {
+								"value": "@variables('varMonth')",
+								"type": "Expression"
+							},
+							"pDay": {
+								"value": "@variables('varDay')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
