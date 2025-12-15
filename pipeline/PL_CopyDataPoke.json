@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Copy_Pokedex",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -90,7 +90,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AzureSqlTable2",
+						"referenceName": "DS_SQL_Poke",
 						"type": "DatasetReference"
 					}
 				],
