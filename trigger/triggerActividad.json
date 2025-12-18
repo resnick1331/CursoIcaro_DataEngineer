@@ -1,0 +1,25 @@
+{
+	"name": "triggerActividad",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_Orquestacion",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2025-12-23T06:00:00",
+				"endTime": "2025-12-31T23:59:00",
+				"timeZone": "E. South America Standard Time"
+			}
+		}
+	}
+}

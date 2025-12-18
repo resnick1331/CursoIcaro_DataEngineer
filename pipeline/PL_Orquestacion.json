@@ -1,0 +1,43 @@
+{
+	"name": "PL_Orquestacion",
+	"properties": {
+		"activities": [
+			{
+				"name": "Ingesta_Actividad_Web",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Ingesta_PokeAPI",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Ingesta_CopyDataPoke",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_CopyDataPoke",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "03-Orquestador"
+		},
+		"annotations": []
+	}
+}
