@@ -1,0 +1,12 @@
+{
+	"name": "LS_open_meteo",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://api.open-meteo.com/v1/forecast",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
