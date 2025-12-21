@@ -1,0 +1,12 @@
+{
+	"name": "LS_clima_diciembre_bsas",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://api.open-meteo.com/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
