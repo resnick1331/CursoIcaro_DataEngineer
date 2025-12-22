@@ -1,0 +1,9 @@
+{
+	"name": "DF-Icaro-01",
+	"location": "brazilsouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0707cf63-17d5-4dfb-b1b2-9704daa2822e",
+		"tenantId": "9f64a28b-83ed-4e8c-b1db-651e75d19d38"
+	}
+}
