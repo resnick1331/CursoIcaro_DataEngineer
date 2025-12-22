@@ -1,0 +1,23 @@
+{
+	"name": "DS_Blob_Storage_JSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Blob_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TrabajoIntegrador"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "climaDiciembreBsAs.json",
+				"folderPath": "open-meteo",
+				"container": "adf-output"
+			}
+		},
+		"schema": {}
+	}
+}
