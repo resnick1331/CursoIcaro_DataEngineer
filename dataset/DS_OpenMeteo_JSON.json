@@ -5,6 +5,24 @@
 			"referenceName": "LS_Http_OpenMeteo",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Latitude": {
+				"type": "string",
+				"defaultValue": "-34.6131"
+			},
+			"Longitude": {
+				"type": "string",
+				"defaultValue": "-58.3772"
+			},
+			"StartDate": {
+				"type": "string",
+				"defaultValue": "2025-12-01"
+			},
+			"EndDate": {
+				"type": "string",
+				"defaultValue": "2025-12-31"
+			}
+		},
 		"folder": {
 			"name": "TrabajoIntegrador"
 		},
@@ -13,7 +31,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "forecast?latitude=-34.6131&longitude=-58.3772&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation,surface_pressure,cloud_cover,wind_speed_10m,weather_code&timezone=auto&start_date=2025-12-01&end_date=2025-12-31"
+				"relativeUrl": {
+					"value": "@concat(\n    'forecast?latitude=', dataset().Latitude, \n    '&longitude=', dataset().Longitude, \n    '&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation,surface_pressure,cloud_cover,wind_speed_10m,weather_code&timezone=auto&start_date=', dataset().StartDate, \n    '&end_date=', dataset().EndDate\n)",
+					"type": "Expression"
+				}
 			}
 		},
 		"schema": {}
