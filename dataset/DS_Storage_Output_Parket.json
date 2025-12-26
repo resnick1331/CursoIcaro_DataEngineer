@@ -5,6 +5,11 @@
 			"referenceName": "LS_Storage_Output_Parket",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"FileName": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "TrabajoIntegrador"
 		},
@@ -13,7 +18,12 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"container": "adb-container"
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"folderPath": "open-meteo",
+				"container": "adf-output"
 			},
 			"compressionCodec": "snappy"
 		},
