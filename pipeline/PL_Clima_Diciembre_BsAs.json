@@ -41,7 +41,9 @@
 						"referenceName": "DS_OpenMeteo_JSON",
 						"type": "DatasetReference",
 						"parameters": {
-							"Longitude": "-58.3772"
+							"Latitude": "@pipeline().parameters.Lat",
+							"Longitude": "@pipeline().parameters.Lon",
+							"StartDate": "@pipeline().parameters.Start"
 						}
 					}
 				],
@@ -53,6 +55,24 @@
 				]
 			}
 		],
+		"parameters": {
+			"Latitude": {
+				"type": "string",
+				"defaultValue": "-34.6131"
+			},
+			"Longitude": {
+				"type": "string",
+				"defaultValue": "-58.3772"
+			},
+			"StartDate": {
+				"type": "string",
+				"defaultValue": "2025-12-01"
+			},
+			"EndDate": {
+				"type": "string",
+				"defaultValue": "2025-12-31"
+			}
+		},
 		"folder": {
 			"name": "TrabajoIntegrador/01-Ingesta"
 		},
