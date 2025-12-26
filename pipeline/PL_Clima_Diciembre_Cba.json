@@ -19,7 +19,7 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
-							"fileListPath": "adf-input/open-meteo/climaDiciembreCordoba.csv",
+							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -30,7 +30,7 @@
 						"type": "ParquetSink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings",
-							"copyBehavior": "PreserveHierarchy"
+							"copyBehavior": "MergeFiles"
 						},
 						"formatSettings": {
 							"type": "ParquetWriteSettings"
@@ -55,11 +55,23 @@
 				"outputs": [
 					{
 						"referenceName": "DS_Storage_Output_Parket",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": {
+								"value": "@pipeline().parameters.FileName",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"FileName": {
+				"type": "string",
+				"defaultValue": "climaDiciembreCba.parquet"
+			}
+		},
 		"folder": {
 			"name": "TrabajoIntegrador/01-Ingesta"
 		},
