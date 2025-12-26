@@ -1,0 +1,44 @@
+{
+	"name": "PL_Clima_Diciembre_Cba",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyData_Clima_Diciembre_Cba",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:10:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"fileListPath": "adf-input/open-meteo/climaDiciembreCordoba.csv",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_Storage_Input_CSV",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "TrabajoIntegrador/01-Ingesta"
+		},
+		"annotations": []
+	}
+}

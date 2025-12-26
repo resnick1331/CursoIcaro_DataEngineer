@@ -41,9 +41,18 @@
 						"referenceName": "DS_OpenMeteo_JSON",
 						"type": "DatasetReference",
 						"parameters": {
-							"Latitude": "@pipeline().parameters.Lat",
-							"Longitude": "@pipeline().parameters.Lon",
-							"StartDate": "@pipeline().parameters.Start"
+							"Latitude": {
+								"value": "@pipeline().parameters.Latitude",
+								"type": "Expression"
+							},
+							"Longitude": {
+								"value": "@pipeline().parameters.Longitude",
+								"type": "Expression"
+							},
+							"StartDate": {
+								"value": "@pipeline().parameters.StartDate",
+								"type": "Expression"
+							}
 						}
 					}
 				],

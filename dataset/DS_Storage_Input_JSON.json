@@ -1,0 +1,23 @@
+{
+	"name": "DS_Storage_Input_JSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Storage_Input_JSON",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TrabajoIntegrador"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "climaDiciembreCordoba.csv",
+				"folderPath": "open-meteo",
+				"container": "adf-input"
+			}
+		},
+		"schema": {}
+	}
+}

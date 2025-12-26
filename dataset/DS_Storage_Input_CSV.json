@@ -1,0 +1,50 @@
+{
+	"name": "DS_Storage_Input_CSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Storage_Input",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TrabajoIntegrador"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "adf-input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "latitude",
+				"type": "String"
+			},
+			{
+				"name": "longitude",
+				"type": "String"
+			},
+			{
+				"name": "elevation",
+				"type": "String"
+			},
+			{
+				"name": "utc_offset_seconds",
+				"type": "String"
+			},
+			{
+				"name": "timezone",
+				"type": "String"
+			},
+			{
+				"name": "timezone_abbreviation",
+				"type": "String"
+			}
+		]
+	}
+}

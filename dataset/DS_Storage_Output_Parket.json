@@ -1,0 +1,22 @@
+{
+	"name": "DS_Storage_Output_Parket",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Storage_Output_Parket",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TrabajoIntegrador"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "adb-container"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
