@@ -3,11 +3,11 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Energy_Sensors_CSV",
-				"type": "DatabricksNotebook",
+				"name": "DataBricks_Job",
+				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
-					"timeout": "0.00:10:00",
+					"timeout": "0.12:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
@@ -15,11 +15,25 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/icaro_trabajo_integrador/energy_sensors_simulation"
-				},
-				"linkedServiceName": {
-					"referenceName": "LS_Icaro_DataBricks",
-					"type": "LinkedServiceReference"
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://adb-7405619058795651.11.azuredatabricks.net/api/2.1/jobs/run-now",
+					"body": {
+						"job_id": 710451596963387
+					},
+					"authentication": {
+						"type": "Basic",
+						"password": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "LS_KV",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "db-to-df"
+						}
+					}
 				}
 			}
 		],
