@@ -3,70 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "CopyData_Clima_Diciembre_Cba",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.00:10:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings",
-							"copyBehavior": "MergeFiles"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "DS_Storage_Input_CSV",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_Storage_Output_Parket",
-						"type": "DatasetReference",
-						"parameters": {
-							"FileName": {
-								"value": "@pipeline().parameters.FileName",
-								"type": "Expression"
-							}
-						}
-					}
-				]
-			},
-			{
-				"name": "Notebook1",
+				"name": "Energy_Sensors_CSV",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
@@ -77,18 +14,15 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/icaro_trabajo_integrador/energy_sensors_simulation"
+				},
 				"linkedServiceName": {
 					"referenceName": "LS_Icaro_DataBricks",
 					"type": "LinkedServiceReference"
 				}
 			}
 		],
-		"parameters": {
-			"FileName": {
-				"type": "string",
-				"defaultValue": "climaDiciembreCba.parquet"
-			}
-		},
 		"folder": {
 			"name": "TrabajoIntegrador/01-Ingesta"
 		},

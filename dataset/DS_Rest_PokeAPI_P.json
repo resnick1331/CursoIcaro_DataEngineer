@@ -5,6 +5,9 @@
 			"referenceName": "LS_Rest_PokeAPI",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "00_Ejercicios"
+		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {

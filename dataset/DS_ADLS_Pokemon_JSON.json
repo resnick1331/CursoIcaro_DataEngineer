@@ -5,6 +5,9 @@
 			"referenceName": "LS_ADLS_Storage",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "00_Ejercicios"
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
