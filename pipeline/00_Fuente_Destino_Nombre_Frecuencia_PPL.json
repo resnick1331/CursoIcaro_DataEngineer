@@ -143,9 +143,6 @@
 			},
 			"columns": {
 				"type": "string"
-			},
-			"type": {
-				"type": "string"
 			}
 		},
 		"folder": {

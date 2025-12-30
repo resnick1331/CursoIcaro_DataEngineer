@@ -5,6 +5,8 @@
 			{
 				"name": "DataBricks_Job",
 				"type": "WebActivity",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -27,10 +29,6 @@
 						"type": "Basic",
 						"password": {
 							"type": "AzureKeyVaultSecret",
-							"store": {
-								"referenceName": "LS_KV",
-								"type": "LinkedServiceReference"
-							},
 							"secretName": "db-to-df"
 						}
 					}
