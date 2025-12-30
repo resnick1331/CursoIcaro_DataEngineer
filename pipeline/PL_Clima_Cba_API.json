@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "CopyData_Clima_Diciembre_BsAs",
+				"name": "CopyData_Clima_Cba",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {

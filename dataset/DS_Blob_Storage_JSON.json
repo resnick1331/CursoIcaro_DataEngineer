@@ -5,6 +5,11 @@
 			"referenceName": "LS_Blob_Storage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"p_filename": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "TrabajoIntegrador"
 		},
@@ -13,9 +18,12 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "climaDiciembreBsAs.json",
-				"folderPath": "open-meteo",
-				"container": "adf-output"
+				"fileName": {
+					"value": "@dataset().p_filename",
+					"type": "Expression"
+				},
+				"folderPath": "01_landing/open_meteo_api",
+				"container": "data"
 			}
 		},
 		"schema": {}
