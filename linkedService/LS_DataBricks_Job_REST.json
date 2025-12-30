@@ -6,17 +6,7 @@
 		"typeProperties": {
 			"url": "https://adb-7405619058795651.11.azuredatabricks.net/",
 			"enableServerCertificateValidation": true,
-			"authenticationType": "Basic",
-			"userName": "nobody",
-			"password": {
-				"type": "AzureKeyVaultSecret",
-				"store": {
-					"referenceName": "LS_KV_DataBricks",
-					"type": "LinkedServiceReference"
-				},
-				"secretName": "db-to-df",
-				"secretVersion": "00172f669c674394be32e43db62e2cc0"
-			}
+			"authenticationType": "Anonymous"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
