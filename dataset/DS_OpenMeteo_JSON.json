@@ -14,7 +14,7 @@
 			"location": {
 				"type": "HttpServerLocation",
 				"relativeUrl": {
-					"value": "@concat('forecast?latitude=-31.4065&longitude=-64.1885&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation,surface_pressure,cloud_cover,wind_speed_10m,weather_code,direct_radiation&timezone=auto&start_date=', \nformatDateTime(addDays(utcnow(), -6), 'yyyy-MM-dd'), \n'&end_date=', \nformatDateTime(utcnow(), 'yyyy-MM-dd'))",
+					"value": "@concat('forecast?latitude=-31.4065&longitude=-64.1885&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,precipitation,surface_pressure,cloud_cover,wind_speed_10m,weather_code,direct_radiation&timezone=auto&start_date=', \nformatDateTime(addDays(addHours(utcnow(), -3), -6), 'yyyy-MM-dd'), \n'&end_date=', \nformatDateTime(addHours(utcnow(), -3), 'yyyy-MM-dd'))",
 					"type": "Expression"
 				}
 			}
