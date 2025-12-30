@@ -1,5 +1,5 @@
 {
-	"name": "PL_Clima_Cba_",
+	"name": "PL_Energy_Sensors_CBA",
 	"properties": {
 		"activities": [
 			{
@@ -64,6 +64,23 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:10:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"parameters": {

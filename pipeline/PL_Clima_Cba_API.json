@@ -38,11 +38,8 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_OpenMeteo_JSON",
-						"type": "DatasetReference",
-						"parameters": {
-							"EndDate": "2025-12-31"
-						}
+						"referenceName": "DS_Open_Meteo_http",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
