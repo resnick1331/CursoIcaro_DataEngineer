@@ -78,7 +78,7 @@
 				},
 				"userProperties": [],
 				"linkedServiceName": {
-					"referenceName": "AzureDatabricks1",
+					"referenceName": "LS_Icaro_DataBricks",
 					"type": "LinkedServiceReference"
 				}
 			}
