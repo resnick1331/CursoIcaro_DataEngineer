@@ -1,0 +1,12 @@
+{
+	"name": "LS_DataBricks_Job_REST",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://adb-7405619058795651.11.azuredatabricks.net/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
